@@ -2,13 +2,17 @@ const test = require('ava')
 
 const mergeSort = require('../src')
 
+function nLogN (input) {
+  return Math.round(input.length * Math.log2(input.length))
+}
+
 test('Even, unordered', function (t) {
   const input = [5, 10, 3, 1, 2, 4, 12, 15]
   const expected = [1, 2, 3, 4, 5, 10, 12, 15]
 
   mergeSort.iterations = 0
   t.deepEqual(mergeSort(input), expected)
-  console.log(mergeSort.iterations)
+  t.deepEqual(mergeSort.iterations, nLogN(input))
 })
 
 test('Odd, unordered', function (t) {
@@ -17,7 +21,7 @@ test('Odd, unordered', function (t) {
 
   mergeSort.iterations = 0
   t.deepEqual(mergeSort(input), expected)
-  console.log(mergeSort.iterations)
+  t.deepEqual(mergeSort.iterations, nLogN(input))
 })
 
 test('Even, ordered', function (t) {
@@ -25,7 +29,7 @@ test('Even, ordered', function (t) {
 
   mergeSort.iterations = 0
   t.deepEqual(mergeSort(input), input)
-  console.log(mergeSort.iterations)
+  t.deepEqual(mergeSort.iterations, nLogN(input))
 })
 
 test('Odd, ordered', function (t) {
@@ -33,7 +37,7 @@ test('Odd, ordered', function (t) {
 
   mergeSort.iterations = 0
   t.deepEqual(mergeSort(input), input)
-  console.log(mergeSort.iterations)
+  t.deepEqual(mergeSort.iterations, nLogN(input))
 })
 
 test('Head is always higher', function (t) {
@@ -42,5 +46,5 @@ test('Head is always higher', function (t) {
 
   mergeSort.iterations = 0
   t.deepEqual(mergeSort(input), expected)
-  console.log(mergeSort.iterations)
+  t.deepEqual(mergeSort.iterations, nLogN(input))
 })
