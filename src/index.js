@@ -7,7 +7,8 @@ function merge (head, tail) {
   let tailIndex = 0
 
   // The first time around we'll compare each index, adding the lesser
-  // value to the sorted array
+  // value to the sorted array, while incrementing the index trackers
+  // to point to the next highest value in the array that it was "removed" from
   while (headIndex < head.length && tailIndex < tail.length) {
     mergeSort.iterations++
 
@@ -18,14 +19,18 @@ function merge (head, tail) {
     }
   }
 
-  // add the rest of head to sorted array
+  // At this point either head or tail is empty.
+  // Since we can assume each array is ordered
+  // we can just append it to the end of the sorted array
+  // because we know the lowest element in head or tail
+  // was higher than every other element already sorted.
+  // only one of the below while loops will run
   while (headIndex < head.length) {
     mergeSort.iterations++
 
     sortedArray.push(head[headIndex++])
   }
 
-  // add rest of tail to sorted array last
   while (tailIndex < tail.length) {
     mergeSort.iterations++
 
@@ -33,24 +38,23 @@ function merge (head, tail) {
   }
 
   return sortedArray
+  // You could also do something like:
+  // return sortedArray.concat(head.slice(headIndex)).concat(tail.slice(tailIndex))
 }
 
 function mergeSort (array) {
   // Arrays of length 0 or 1 are already sorted.
   if (array.length < 2) return array
 
-  // Find where to split the array
   const middle = array.length / 2
 
-  // The first half of the array, 0 through middle
   const head = mergeSort(array.slice(0, middle))
-  // The second half of the array, middle through end
   const tail = mergeSort(array.slice(middle, array.length))
 
-  // merge and sort head with tail
   return merge(head, tail)
 }
 
+// counting iterations for testing purposes
 mergeSort.iterations = 0
 
 module.exports = mergeSort

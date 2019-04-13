@@ -48,3 +48,12 @@ test('Head is always higher', function (t) {
   t.deepEqual(mergeSort(input), expected)
   t.deepEqual(mergeSort.iterations, nLogN(input))
 })
+
+test('Alternate descending', function (t) {
+  const input = [4, 1, 3, 2]
+  const expected = [1, 2, 3, 4]
+
+  mergeSort.iterations = 0
+  t.deepEqual(mergeSort(input), expected)
+  t.deepEqual(mergeSort.iterations, nLogN(input))
+})
