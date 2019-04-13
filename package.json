@@ -1,0 +1,39 @@
+{
+  "name": "mergesort",
+  "version": "0.0.0",
+  "description": "Merge sort",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava",
+    "precommit": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustinDFuller/mergesort.git"
+  },
+  "keywords": [
+    "array",
+    "sort",
+    "mergesort"
+  ],
+  "author": "Justin Fuller <justindanielfuller@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JustinDFuller/mergesort/issues"
+  },
+  "homepage": "https://github.com/JustinDFuller/mergesort#readme",
+  "devDependencies": {
+    "ava": "^1.4.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier-standard": "^9.1.1"
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.js": [
+        "prettier-standard",
+        "git add"
+      ]
+    }
+  }
+}
