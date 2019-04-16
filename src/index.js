@@ -1,3 +1,10 @@
+/**
+ * This is a working implementation of mergesort
+ * but it uses temp arrays for each split, so it's inefficent.
+ * Another implementation "withMutation.js" will mutate a single
+ * temporary array to be more memory efficient.
+ */
+
 function merge (head, tail) {
   // Use a temp array to store sorted values
   const sortedArray = []

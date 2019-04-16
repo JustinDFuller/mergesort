@@ -1,12 +1,12 @@
 const test = require('ava')
 
-const mergeSort = require('../src')
+const mergeSort = require('../src/withMutation')
 
 function nLogN (input) {
   return Math.round(input.length * Math.log2(input.length))
 }
 
-test('Even, unordered', function (t) {
+test.only('Even, unordered', function (t) {
   const input = [5, 10, 3, 1, 2, 4, 12, 15]
   const expected = [1, 2, 3, 4, 5, 10, 12, 15]
 
@@ -52,15 +52,6 @@ test('Head is always higher', function (t) {
 test('Alternate descending', function (t) {
   const input = [4, 1, 3, 2]
   const expected = [1, 2, 3, 4]
-
-  mergeSort.iterations = 0
-  t.deepEqual(mergeSort(input), expected)
-  t.deepEqual(mergeSort.iterations, nLogN(input))
-})
-
-test('Duplicates', function (t) {
-  const input = [1, 1, 2, 3, 2, 4, 5, 5, 4]
-  const expected = [1, 1, 2, 2, 3, 4, 4, 5, 5]
 
   mergeSort.iterations = 0
   t.deepEqual(mergeSort(input), expected)

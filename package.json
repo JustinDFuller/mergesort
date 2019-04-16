@@ -4,7 +4,8 @@
   "description": "Merge sort",
   "main": "index.js",
   "scripts": {
-    "test": "ava",
+    "test": "ava --verbose",
+    "lint": "prettier-standard",
     "precommit": "lint-staged"
   },
   "repository": {
